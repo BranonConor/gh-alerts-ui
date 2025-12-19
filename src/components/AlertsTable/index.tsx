@@ -1,6 +1,7 @@
-import { Button } from "@primer/react"
+import { Button, Heading, Link as PrimerLink, Text } from "@primer/react"
 import styles from "./AlertsTable.module.css"
-import { CheckIcon, ShieldIcon, TriangleDownIcon } from "@primer/octicons-react"
+import { CheckIcon, LockIcon, ShieldIcon, TriangleDownIcon } from "@primer/octicons-react"
+import Link from "next/link"
 
 export const AlertsTable = () => {
     return (
@@ -20,7 +21,23 @@ export const AlertsTable = () => {
                     <Button variant='invisible' trailingAction={TriangleDownIcon}>Sort</Button>
                 </div>
             </div>
-            <div className={styles.AlertsTableItem}>ITEM</div>
-        </div>
+            <div className={styles.AlertsTableItem}>
+                <div className={styles.Icon}>
+                    <ShieldIcon />
+                </div>
+                <div className={styles.Title}>
+                    <PrimerLink href="#">Remove code injection in Log4j</PrimerLink>
+                    <p>
+                        <Text size='small' color='var(--fgColor-muted)'>Opened 5 months ago - Detected in org.apache.logging - pom.xml</Text>
+                    </p>
+                </div>
+                <div className={styles.RightContent}>
+                    <Text size='small' color='var(--fgColor-muted)'>
+                        <LockIcon size="small" />
+                        dsp-testing/test-123
+                    </Text>
+                </div>
+            </div>
+        </div >
     )
 }
