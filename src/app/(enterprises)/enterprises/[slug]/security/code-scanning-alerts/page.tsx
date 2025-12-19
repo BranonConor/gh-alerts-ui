@@ -31,7 +31,7 @@ export default function CodeScanningAlertsPage({
         }}
       >
         <Heading as="h2" sx={{ fontSize: 24, fontWeight: 600 }}>
-          Dependabot alerts
+          Code scanning alerts
         </Heading>
         <Link href="#" sx={{ fontSize: 1 }}>
           Get updates and share feedback
@@ -47,7 +47,7 @@ export default function CodeScanningAlertsPage({
         />
       </Box>
 
-      <AlertsTable data={codeScanningData} />
+      <AlertsTable data={codeScanningData} alertType="code-scanning" />
     </Box>
   );
 }

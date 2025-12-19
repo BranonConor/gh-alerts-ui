@@ -47,7 +47,7 @@ export default function DependabotAlertsPage({
         />
       </Box>
 
-      <AlertsTable data={dependabotData} />
+      <AlertsTable data={dependabotData} alertType="dependabot" />
     </Box>
   );
 }
