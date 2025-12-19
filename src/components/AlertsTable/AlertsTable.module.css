@@ -1,0 +1,47 @@
+.AlertsTable {
+    width: 100%;
+    border-radius: var(--borderRadius-medium);
+    border: var(--borderWidth-thin) solid var(--borderColor-default);
+}
+
+.AlertsTableHeader {
+    padding: 1rem;
+    display: flex;
+    background-color: var(--bgColor-muted);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
+    height: 64px;
+
+    button {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .Tabber {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+        /* This is how they do it in product. Don't love it but hey :)  */
+        transform: translateX(-4px);
+
+        .inactive {
+            color: var(--fgColor-muted);
+        }
+    }
+
+    .Filters {
+        display: flex;
+        gap: 8px;
+
+        button {
+            color: var(--fgColor-muted);
+            font-weight: var(--fontWeight-medium);
+        }
+    }
+}
+
+.AlertsTableItem {
+    padding: 1rem;
+    border-top: 1px solid var(--borderColor-default);
+    display: flex;
+}
