@@ -104,6 +104,7 @@ export type AlertData = DependabotAlert | CodeScanningAlert | SecretScanningAler
 interface AlertTableProps {
     data: AlertData[];
     alertType: 'dependabot' | 'code-scanning' | 'secret-scanning';
+    detailUrl: string;
 }
 
 // Helper function to determine alert details based on type
@@ -139,7 +140,7 @@ const getAlertDetails = (alert: AlertData, alertType: string) => {
     }
 };
 
-export const AlertsTable = ({ data, alertType }: AlertTableProps) => {
+export const AlertsTable = ({ data, alertType, detailUrl }: AlertTableProps) => {
     // Count open and closed alerts
     const openCount = data.filter(alert => alert.state === 'open').length;
     const closedCount = data.filter(alert => alert.state !== 'open').length;
@@ -154,7 +155,7 @@ export const AlertsTable = ({ data, alertType }: AlertTableProps) => {
                     <AlertsTableItem
                         key={alert.number || index}
                         title={alertDetails.title}
-                        url={alert.html_url}
+                        url={detailUrl}
                         openedTime={alert.created_at || ''}
                         detectedIn={alertDetails.detectedIn}
                         fileName={alertDetails.fileName}

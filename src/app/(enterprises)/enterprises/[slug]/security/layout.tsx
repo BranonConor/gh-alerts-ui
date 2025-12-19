@@ -1,6 +1,5 @@
 "use client";
 import { PageLayout } from "@primer/react";
-import { ParentNavigation } from "@/components/ParentNavigation";
 
 export default function EnterprisePeopleLayout({
   children,
@@ -15,17 +14,7 @@ export default function EnterprisePeopleLayout({
       containerWidth="full"
       className="height-full"
     >
-      <PageLayout.Pane
-        position="start"
-        divider="line"
-        padding="condensed"
-        width="large"
-      >
-        <ParentNavigation />
-      </PageLayout.Pane>
-      <PageLayout.Content padding="condensed" width="xlarge">
-        {children}
-      </PageLayout.Content>
+      {children}
     </PageLayout>
   );
 }
