@@ -1,0 +1,1 @@
+export { AlertsTableHeader } from "./AlertsTableHeader";

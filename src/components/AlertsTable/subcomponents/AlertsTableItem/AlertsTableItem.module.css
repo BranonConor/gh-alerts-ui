@@ -1,0 +1,26 @@
+.AlertsTableItem {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--borderColor-default);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.Title {
+    flex-grow: 1;
+}
+
+.Title a {
+    font-weight: var(--base-text-weight-semibold, 600);
+    color: black;
+}
+
+.Title a:hover {
+    color: var(--fgColor-link);
+}
+
+.RightContent span {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: var(--fgColor-muted);
+}
