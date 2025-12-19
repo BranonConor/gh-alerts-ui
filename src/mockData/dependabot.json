@@ -1,0 +1,463 @@
+[
+    {
+        "number": 1,
+        "state": "open",
+        "dependency": {
+            "package": {
+                "ecosystem": "npm",
+                "name": "lodash"
+            },
+            "manifest_path": "package.json",
+            "scope": "runtime"
+        },
+        "security_advisory": {
+            "ghsa_id": "GHSA-jf85-cpcp-j695",
+            "cve_id": "CVE-2021-23337",
+            "summary": "Command Injection in lodash",
+            "description": "lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+            "severity": "high",
+            "identifiers": [
+                {
+                    "value": "GHSA-jf85-cpcp-j695",
+                    "type": "GHSA"
+                },
+                {
+                    "value": "CVE-2021-23337",
+                    "type": "CVE"
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337"
+                },
+                {
+                    "url": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"
+                }
+            ],
+            "published_at": "2021-02-15T11:13:00Z",
+            "updated_at": "2024-03-10T05:20:00Z",
+            "withdrawn_at": null,
+            "vulnerabilities": [
+                {
+                    "package": {
+                        "ecosystem": "npm",
+                        "name": "lodash"
+                    },
+                    "severity": "high",
+                    "vulnerable_version_range": "< 4.17.21",
+                    "first_patched_version": {
+                        "identifier": "4.17.21"
+                    }
+                }
+            ],
+            "cvss": {
+                "vector_string": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                "score": 7.2
+            },
+            "cwes": [
+                {
+                    "cwe_id": "CWE-77",
+                    "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+                }
+            ]
+        },
+        "security_vulnerability": {
+            "package": {
+                "ecosystem": "npm",
+                "name": "lodash"
+            },
+            "severity": "high",
+            "vulnerable_version_range": "< 4.17.21",
+            "first_patched_version": {
+                "identifier": "4.17.21"
+            }
+        },
+        "url": "https://api.github.com/repos/example-org/example-repo/dependabot/alerts/1",
+        "html_url": "https://github.com/example-org/example-repo/security/dependabot/1",
+        "created_at": "2025-11-20T09:12:34Z",
+        "updated_at": "2025-12-18T14:23:11Z",
+        "dismissed_at": null,
+        "dismissed_by": null,
+        "dismissed_reason": null,
+        "dismissed_comment": null,
+        "fixed_at": null,
+        "auto_dismissed_at": null,
+        "repository": {
+            "id": 123456789,
+            "name": "example-repo",
+            "full_name": "example-org/example-repo",
+            "private": true,
+            "html_url": "https://github.com/example-org/example-repo"
+        }
+    },
+    {
+        "number": 2,
+        "state": "dismissed",
+        "dependency": {
+            "package": {
+                "ecosystem": "pip",
+                "name": "django"
+            },
+            "manifest_path": "requirements.txt",
+            "scope": "runtime"
+        },
+        "security_advisory": {
+            "ghsa_id": "GHSA-v6rh-hp5x-86rv",
+            "cve_id": "CVE-2023-43665",
+            "summary": "Potential denial of service vulnerability in Django",
+            "description": "In Django 3.2 before 3.2.22, 4.1 before 4.1.12, and 4.2 before 4.2.6, the django.utils.text. Truncator chars() and words() methods are subject to a potential DoS (denial of service) attack via certain inputs with very long, potentially malformed HTML text.",
+            "severity": "medium",
+            "identifiers": [
+                {
+                    "value": "GHSA-v6rh-hp5x-86rv",
+                    "type": "GHSA"
+                },
+                {
+                    "value": "CVE-2023-43665",
+                    "type": "CVE"
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-43665"
+                },
+                {
+                    "url": "https://www.djangoproject.com/weblog/2023/oct/04/security-releases/"
+                }
+            ],
+            "published_at": "2023-10-04T15:30:00Z",
+            "updated_at": "2024-08-22T18:31:00Z",
+            "withdrawn_at": null,
+            "vulnerabilities": [
+                {
+                    "package": {
+                        "ecosystem": "pip",
+                        "name": "django"
+                    },
+                    "severity": "medium",
+                    "vulnerable_version_range": ">= 3.2.0, < 3.2.22",
+                    "first_patched_version": {
+                        "identifier": "3.2.22"
+                    }
+                }
+            ],
+            "cvss": {
+                "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "score": 5.3
+            },
+            "cwes": [
+                {
+                    "cwe_id": "CWE-400",
+                    "name": "Uncontrolled Resource Consumption"
+                }
+            ]
+        },
+        "security_vulnerability": {
+            "package": {
+                "ecosystem": "pip",
+                "name": "django"
+            },
+            "severity": "medium",
+            "vulnerable_version_range": ">= 3.2.0, < 3.2.22",
+            "first_patched_version": {
+                "identifier": "3.2.22"
+            }
+        },
+        "url": "https://api.github.com/repos/example-org/example-repo/dependabot/alerts/2",
+        "html_url": "https://github.com/example-org/example-repo/security/dependabot/2",
+        "created_at": "2025-10-15T11:45:22Z",
+        "updated_at": "2025-11-03T16:30:45Z",
+        "dismissed_at": "2025-11-03T16:30:45Z",
+        "dismissed_by": {
+            "login": "security-architect",
+            "id": 222333444,
+            "avatar_url": "https://avatars.githubusercontent.com/u/222333444?v=4",
+            "html_url": "https://github.com/security-architect",
+            "type": "User"
+        },
+        "dismissed_reason": "tolerable_risk",
+        "dismissed_comment": "We have additional security controls in place that mitigate this risk.  Will upgrade in next maintenance window.",
+        "fixed_at": null,
+        "auto_dismissed_at": null,
+        "repository": {
+            "id": 123456789,
+            "name": "example-repo",
+            "full_name": "example-org/example-repo",
+            "private": true,
+            "html_url": "https://github.com/example-org/example-repo"
+        }
+    },
+    {
+        "number": 3,
+        "state": "fixed",
+        "dependency": {
+            "package": {
+                "ecosystem": "maven",
+                "name": "org.springframework:spring-core"
+            },
+            "manifest_path": "pom.xml",
+            "scope": "runtime"
+        },
+        "security_advisory": {
+            "ghsa_id": "GHSA-564r-hj7v-mcr5",
+            "cve_id": "CVE-2024-22262",
+            "summary": "Spring Framework URL Parsing with Host Validation may result in RFD attack",
+            "description": "Applications that use UriComponentsBuilder to parse an externally provided URL can be vulnerable to an open redirect attack or to a SSRF attack if the URL is used after parsing in a server-side request.",
+            "severity": "critical",
+            "identifiers": [
+                {
+                    "value": "GHSA-564r-hj7v-mcr5",
+                    "type": "GHSA"
+                },
+                {
+                    "value": "CVE-2024-22262",
+                    "type": "CVE"
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-22262"
+                },
+                {
+                    "url": "https://spring.io/security/cve-2024-22262"
+                }
+            ],
+            "published_at": "2024-05-14T16:30:00Z",
+            "updated_at": "2024-11-20T08:15:00Z",
+            "withdrawn_at": null,
+            "vulnerabilities": [
+                {
+                    "package": {
+                        "ecosystem": "maven",
+                        "name": "org.springframework:spring-core"
+                    },
+                    "severity": "critical",
+                    "vulnerable_version_range": ">= 5.3.0, < 5.3.34",
+                    "first_patched_version": {
+                        "identifier": "5.3.34"
+                    }
+                }
+            ],
+            "cvss": {
+                "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                "score": 9.6
+            },
+            "cwes": [
+                {
+                    "cwe_id": "CWE-601",
+                    "name": "URL Redirection to Untrusted Site ('Open Redirect')"
+                }
+            ]
+        },
+        "security_vulnerability": {
+            "package": {
+                "ecosystem": "maven",
+                "name": "org.springframework:spring-core"
+            },
+            "severity": "critical",
+            "vulnerable_version_range": ">= 5.3.0, < 5.3.34",
+            "first_patched_version": {
+                "identifier": "5.3.34"
+            }
+        },
+        "url": "https://api.github.com/repos/example-org/example-repo/dependabot/alerts/3",
+        "html_url": "https://github.com/example-org/example-repo/security/dependabot/3",
+        "created_at": "2025-12-01T08:22:11Z",
+        "updated_at": "2025-12-15T10:45:33Z",
+        "dismissed_at": null,
+        "dismissed_by": null,
+        "dismissed_reason": null,
+        "dismissed_comment": null,
+        "fixed_at": "2025-12-15T10:45:33Z",
+        "auto_dismissed_at": null,
+        "repository": {
+            "id": 123456789,
+            "name": "example-repo",
+            "full_name": "example-org/example-repo",
+            "private": true,
+            "html_url": "https://github.com/example-org/example-repo"
+        }
+    },
+    {
+        "number": 4,
+        "state": "open",
+        "dependency": {
+            "package": {
+                "ecosystem": "nuget",
+                "name": "System.Text.Json"
+            },
+            "manifest_path": "src/WebApp/WebApp.csproj",
+            "scope": "runtime"
+        },
+        "security_advisory": {
+            "ghsa_id": "GHSA-hh2w-p6rv-4g7w",
+            "cve_id": "CVE-2024-43485",
+            "summary": ". NET Denial of Service Vulnerability",
+            "description": "A vulnerability exists in System.Text.Json where an attacker could cause a Denial of Service by passing a specially crafted JSON payload that triggers excessive CPU usage during deserialization.",
+            "severity": "high",
+            "identifiers": [
+                {
+                    "value": "GHSA-hh2w-p6rv-4g7w",
+                    "type": "GHSA"
+                },
+                {
+                    "value": "CVE-2024-43485",
+                    "type": "CVE"
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-43485"
+                },
+                {
+                    "url": "https://github.com/dotnet/runtime/security/advisories/GHSA-hh2w-p6rv-4g7w"
+                }
+            ],
+            "published_at": "2024-10-08T18:30:00Z",
+            "updated_at": "2024-12-05T14:22:00Z",
+            "withdrawn_at": null,
+            "vulnerabilities": [
+                {
+                    "package": {
+                        "ecosystem": "nuget",
+                        "name": "System.Text. Json"
+                    },
+                    "severity": "high",
+                    "vulnerable_version_range": ">= 6.0.0, < 6.0.35",
+                    "first_patched_version": {
+                        "identifier": "6.0.35"
+                    }
+                }
+            ],
+            "cvss": {
+                "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "score": 7.5
+            },
+            "cwes": [
+                {
+                    "cwe_id": "CWE-400",
+                    "name": "Uncontrolled Resource Consumption"
+                }
+            ]
+        },
+        "security_vulnerability": {
+            "package": {
+                "ecosystem": "nuget",
+                "name": "System.Text.Json"
+            },
+            "severity": "high",
+            "vulnerable_version_range": ">= 6.0.0, < 6.0.35",
+            "first_patched_version": {
+                "identifier": "6.0.35"
+            }
+        },
+        "url": "https://api.github.com/repos/example-org/example-repo/dependabot/alerts/4",
+        "html_url": "https://github.com/example-org/example-repo/security/dependabot/4",
+        "created_at": "2025-12-18T07:15:42Z",
+        "updated_at": "2025-12-18T07:15:42Z",
+        "dismissed_at": null,
+        "dismissed_by": null,
+        "dismissed_reason": null,
+        "dismissed_comment": null,
+        "fixed_at": null,
+        "auto_dismissed_at": null,
+        "repository": {
+            "id": 123456789,
+            "name": "example-repo",
+            "full_name": "example-org/example-repo",
+            "private": true,
+            "html_url": "https://github.com/example-org/example-repo"
+        }
+    },
+    {
+        "number": 5,
+        "state": "auto_dismissed",
+        "dependency": {
+            "package": {
+                "ecosystem": "npm",
+                "name": "axios"
+            },
+            "manifest_path": "package-lock.json",
+            "scope": "development"
+        },
+        "security_advisory": {
+            "ghsa_id": "GHSA-wf5p-g6vw-rhxx",
+            "cve_id": "CVE-2023-45857",
+            "summary": "Axios Cross-Site Request Forgery Vulnerability",
+            "description": "Axios 1.5.1 allows CSRF because it does not properly check the origin of requests, which could lead to unauthorized actions on behalf of authenticated users.",
+            "severity": "low",
+            "identifiers": [
+                {
+                    "value": "GHSA-wf5p-g6vw-rhxx",
+                    "type": "GHSA"
+                },
+                {
+                    "value": "CVE-2023-45857",
+                    "type": "CVE"
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45857"
+                },
+                {
+                    "url": "https://github.com/axios/axios/issues/6006"
+                }
+            ],
+            "published_at": "2023-11-08T21:30:00Z",
+            "updated_at": "2024-05-14T19:47:00Z",
+            "withdrawn_at": null,
+            "vulnerabilities": [
+                {
+                    "package": {
+                        "ecosystem": "npm",
+                        "name": "axios"
+                    },
+                    "severity": "low",
+                    "vulnerable_version_range": ">= 1.5.0, <= 1.5.1",
+                    "first_patched_version": {
+                        "identifier": "1.6.0"
+                    }
+                }
+            ],
+            "cvss": {
+                "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+                "score": 4.3
+            },
+            "cwes": [
+                {
+                    "cwe_id": "CWE-352",
+                    "name": "Cross-Site Request Forgery (CSRF)"
+                }
+            ]
+        },
+        "security_vulnerability": {
+            "package": {
+                "ecosystem": "npm",
+                "name": "axios"
+            },
+            "severity": "low",
+            "vulnerable_version_range": ">= 1.5.0, <= 1.5.1",
+            "first_patched_version": {
+                "identifier": "1.6.0"
+            }
+        },
+        "url": "https://api.github.com/repos/example-org/example-repo/dependabot/alerts/5",
+        "html_url": "https://github.com/example-org/example-repo/security/dependabot/5",
+        "created_at": "2025-11-12T14:33:18Z",
+        "updated_at": "2025-12-10T09:22:55Z",
+        "dismissed_at": null,
+        "dismissed_by": null,
+        "dismissed_reason": "auto_dismissed",
+        "dismissed_comment": "Automatically dismissed as the package is only used in development and does not affect production code.",
+        "fixed_at": null,
+        "auto_dismissed_at": "2025-12-10T09:22:55Z",
+        "repository": {
+            "id": 123456789,
+            "name": "example-repo",
+            "full_name": "example-org/example-repo",
+            "private": true,
+            "html_url": "https://github.com/example-org/example-repo"
+        }
+    }
+]

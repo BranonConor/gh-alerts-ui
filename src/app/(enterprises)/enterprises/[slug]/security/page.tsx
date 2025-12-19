@@ -1,20 +1,12 @@
 "use client";
 import { use } from "react";
-import { Blankslate } from "@primer/react/experimental";
+import { redirect } from "next/navigation";
 
-export default function EnterprisePage({
+export default function EnterpriseSecurityPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-
-  return (
-    <Blankslate spacious>
-      <Blankslate.Heading>Welcome to {slug} security</Blankslate.Heading>
-      <Blankslate.Description>
-        This is your enterprise account security entry point
-      </Blankslate.Description>
-    </Blankslate>
-  );
+  redirect(`/enterprises/${slug}/security/dependabot-alerts`);
 }
