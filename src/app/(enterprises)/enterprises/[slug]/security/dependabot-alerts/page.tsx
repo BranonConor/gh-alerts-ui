@@ -3,22 +3,14 @@ import { use } from "react";
 import {
   Box,
   Heading,
-  Text,
   TextInput,
-  Button,
   Link,
-  Label,
-  ActionList,
-  ActionMenu,
 } from "@primer/react";
 import {
   SearchIcon,
-  ShieldIcon,
-  CheckIcon,
-  LockIcon,
-  TriangleDownIcon,
 } from "@primer/octicons-react";
 import { AlertsTable } from "@/components/AlertsTable";
+import dependabotData from "@/mockData/dependabot.json";
 
 export default function DependabotAlertsPage({
   params,
@@ -55,7 +47,7 @@ export default function DependabotAlertsPage({
         />
       </Box>
 
-      <AlertsTable />
+      <AlertsTable data={dependabotData} />
     </Box>
   );
 }

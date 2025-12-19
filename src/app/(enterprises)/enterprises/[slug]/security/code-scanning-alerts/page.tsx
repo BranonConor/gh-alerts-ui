@@ -1,6 +1,16 @@
 "use client";
 import { use } from "react";
-import { Blankslate } from "@primer/react/experimental";
+import {
+  Box,
+  Heading,
+  TextInput,
+  Link,
+} from "@primer/react";
+import {
+  SearchIcon,
+} from "@primer/octicons-react";
+import { AlertsTable } from "@/components/AlertsTable";
+import codeScanningData from "@/mockData/code-scanning.json";
 
 export default function CodeScanningAlertsPage({
   params,
@@ -10,11 +20,34 @@ export default function CodeScanningAlertsPage({
   const { slug } = use(params);
 
   return (
-    <Blankslate spacious>
-      <Blankslate.Heading>Code scanning alerts for {slug}</Blankslate.Heading>
-      <Blankslate.Description>
-        This page will display code scanning alerts for your enterprise
-      </Blankslate.Description>
-    </Blankslate>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      {/* Header */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 3,
+        }}
+      >
+        <Heading as="h2" sx={{ fontSize: 24, fontWeight: 600 }}>
+          Dependabot alerts
+        </Heading>
+        <Link href="#" sx={{ fontSize: 1 }}>
+          Get updates and share feedback
+        </Link>
+      </Box>
+
+      {/* Search and filter bar */}
+      <Box sx={{ mb: 3 }}>
+        <TextInput
+          leadingVisual={SearchIcon}
+          placeholder="is:open"
+          sx={{ width: "100%" }}
+        />
+      </Box>
+
+      <AlertsTable data={codeScanningData} />
+    </Box>
   );
 }
