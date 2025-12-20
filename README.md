@@ -101,6 +101,40 @@ Including faux account data is especially important during deployment, as Next.j
 ...
 ```
 
+## Deployment to GitHub Pages
+
+This repository is configured to automatically deploy to GitHub Pages when changes are pushed to the `main` branch.
+
+### How it works
+
+1. **Static Export**: The `next.config.js` file configures Next.js to generate a static site export (`output: "export"`).
+2. **GitHub Actions**: The `.github/workflows/nextjs.yml` workflow automatically builds and deploys the site on every push to `main`.
+3. **Static Assets**: The built site is exported to the `out` directory, which is then deployed to GitHub Pages.
+
+### Setup Requirements
+
+To enable GitHub Pages for this repository:
+
+1. Go to your repository's **Settings** → **Pages**
+2. Under "Source", select **GitHub Actions**
+3. The site will be automatically deployed on the next push to `main`
+
+### Local Testing
+
+To test the production build locally:
+
+```bash
+npm run build  # or yarn build
+npx serve out  # Serve the static files
+```
+
+### Important Notes
+
+- Server-side rendering (SSR) and API routes are not supported in static exports
+- All data fetching must happen client-side
+- Dynamic routes require predefined paths at build time (configured in `generateStaticParams`)
+- Images are configured as unoptimized for static hosting
+
 ## Need help?
 If you need help, please open an issue in this repository.
 
