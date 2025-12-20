@@ -55,7 +55,7 @@ export default function CodeScanningAlertsPage({
           <AlertsTable
             data={codeScanningData}
             alertType="code-scanning"
-            detailUrl="/enterprises/avocado-corp/security/code-scanning-alerts/test-alert"
+            detailUrl={`/enterprises/${slug}/security/code-scanning-alerts/test-alert`}
           />
         </Box>
       </PageLayout.Content>
