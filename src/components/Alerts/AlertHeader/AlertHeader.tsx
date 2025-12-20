@@ -18,14 +18,14 @@ export function AlertHeader({ alertStatus = 'open', subtitleContent, timestamp, 
     const pathname = usePathname();
 
     // Determine alert type from pathname
-    let alertType: 'dependabot' | 'code-scanning' | 'secret-scanning' | null = null;
+    let alertType: 'Dependabot' | 'Code Scanning' | 'Secret Scanning' | null = null;
 
     if (pathname.includes('dependabot-alerts')) {
-        alertType = 'dependabot';
+        alertType = 'Dependabot';
     } else if (pathname.includes('code-scanning-alerts')) {
-        alertType = 'code-scanning';
+        alertType = 'Code Scanning';
     } else if (pathname.includes('secret-scanning-alerts')) {
-        alertType = 'secret-scanning';
+        alertType = 'Secret Scanning';
     }
 
     return (
@@ -33,7 +33,7 @@ export function AlertHeader({ alertStatus = 'open', subtitleContent, timestamp, 
             <div className={styles.HeaderContent}>
                 <div className={styles.Breadcrumb}>
                     <Link href={breadCrumbUrl ?? '#'} className={styles.Item}>
-                        <Text size='medium' className={styles.Item}>{alertType}</Text>
+                        <Text size='medium' className={styles.Item}>{alertType} alerts</Text>
                     </Link>
                     <Text size='medium' className={styles.Item}>/</Text>
                     <Text size='medium' className={styles.Item}>test-alert</Text>
