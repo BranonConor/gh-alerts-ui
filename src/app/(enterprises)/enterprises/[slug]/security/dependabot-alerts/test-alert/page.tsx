@@ -26,7 +26,7 @@ export default function DependabotAlertDetailPage({
                 subtitleContent={subtitle}
                 timestamp={alertData.created_at}
                 buttonGroup={
-                    <Button variant="secondary">Dismiss alert</Button>
+                    <Button>Dismiss alert</Button>
                 }
             />
         </Box>
