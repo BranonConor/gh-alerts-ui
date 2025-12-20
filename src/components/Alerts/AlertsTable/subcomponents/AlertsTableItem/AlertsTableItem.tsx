@@ -1,6 +1,7 @@
 import { Link as PrimerLink, Text } from "@primer/react";
 import { LockIcon, ShieldIcon, GlobeIcon } from "@primer/octicons-react";
 import styles from "./AlertsTableItem.module.css";
+import Link from "next/link";
 
 interface AlertsTableItemProps {
     title: string;
@@ -61,7 +62,7 @@ export function AlertsTableItem({
                 <ShieldIcon />
             </div>
             <div className={styles.Title}>
-                <PrimerLink href={url}>{title}</PrimerLink>
+                <Link href={url}>{title}</Link>
                 <p>
                     <Text size="small" color="var(--fgColor-muted)">
                         {metadata}

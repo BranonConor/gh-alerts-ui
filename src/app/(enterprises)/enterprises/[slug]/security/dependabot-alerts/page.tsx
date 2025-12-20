@@ -55,7 +55,7 @@ export default function DependabotAlertsPage({
           <AlertsTable
             data={dependabotData}
             alertType="dependabot"
-            detailUrl={`/enterprises/${slug}/security/dependabot-alerts/test-alert`}
+            detailUrl={`dependabot-alerts/test-alert`}
           />
         </Box>
       </PageLayout.Content>

@@ -20,6 +20,7 @@ export default function CodeScanningAlertsPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  console.log(slug)
 
   return (
     <>
@@ -55,7 +56,7 @@ export default function CodeScanningAlertsPage({
           <AlertsTable
             data={codeScanningData}
             alertType="code-scanning"
-            detailUrl={`/enterprises/${slug}/security/code-scanning-alerts/test-alert`}
+            detailUrl={`code-scanning-alerts/test-alert`}
           />
         </Box>
       </PageLayout.Content>

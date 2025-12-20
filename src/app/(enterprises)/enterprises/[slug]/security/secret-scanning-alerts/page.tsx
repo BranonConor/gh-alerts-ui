@@ -55,7 +55,7 @@ export default function SecretScanningAlertsPage({
           <AlertsTable
             data={secretScanningData}
             alertType="secret-scanning"
-            detailUrl={`/enterprises/${slug}/security/secret-scanning-alerts/test-alert`}
+            detailUrl={`secret-scanning-alerts/test-alert`}
           />
         </Box>
       </PageLayout.Content>
