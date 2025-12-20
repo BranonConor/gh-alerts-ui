@@ -1,6 +1,6 @@
 "use client";
-import { use } from "react";
-import { Box, Button } from "@primer/react";
+import { use, ReactNode } from "react";
+import { Box } from "@primer/react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
 import dependabotData from "@/mockData/dependabot.json";
 
@@ -18,6 +18,10 @@ export default function DependabotAlertDetailPage({
     const subtitle = [detectedIn, fileName].filter(Boolean).join(' • ');
     const title = alertData.security_advisory?.summary || 'Dependency Alert';
 
+    const buttonGroup: ReactNode = (
+        <button>Dismiss alert</button>
+    );
+
     return (
         <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
             <AlertHeader
@@ -25,9 +29,7 @@ export default function DependabotAlertDetailPage({
                 title={title}
                 subtitleContent={subtitle}
                 timestamp={alertData.created_at}
-                buttonGroup={
-                    <Button variant="secondary">Dismiss alert</Button>
-                }
+                buttonGroup={buttonGroup}
             />
         </Box>
     );

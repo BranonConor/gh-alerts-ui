@@ -1,6 +1,6 @@
 "use client";
-import { use } from "react";
-import { Box, Button } from "@primer/react";
+import { use, ReactNode } from "react";
+import { Box } from "@primer/react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
 import codeScanningData from "@/mockData/code-scanning.json";
 
@@ -18,6 +18,10 @@ export default function CodeScanningAlertDetailPage({
     const subtitle = [detectedIn, fileName].filter(Boolean).join(' • ');
     const title = alertData.rule.description;
 
+    const buttonGroup: ReactNode = (
+        <button>Dismiss alert</button>
+    );
+
     return (
         <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
             <AlertHeader
@@ -25,9 +29,7 @@ export default function CodeScanningAlertDetailPage({
                 title={title}
                 subtitleContent={subtitle}
                 timestamp={alertData.created_at}
-                buttonGroup={
-                    <Button variant="secondary">Dismiss alert</Button>
-                }
+                buttonGroup={buttonGroup}
             />
         </Box>
     );
