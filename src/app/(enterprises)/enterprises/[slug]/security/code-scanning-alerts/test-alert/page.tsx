@@ -19,7 +19,19 @@ export default function CodeScanningAlertDetailPage({
     const title = alertData.rule.description;
 
     const buttonGroup: ReactNode = (
-        <button>Dismiss alert</button>
+        <button 
+            style={{ 
+                padding: '5px 16px', 
+                backgroundColor: '#f6f8fa',
+                border: '1px solid rgba(31,35,40,0.15)',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '14px'
+            }}
+            aria-label="Dismiss alert"
+        >
+            Dismiss alert
+        </button>
     );
 
     return (
