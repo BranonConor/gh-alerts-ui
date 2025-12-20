@@ -16,7 +16,7 @@ export default function SecretScanningAlertDetailLayout({
                 height: "100%",
             }}
         >
-            <Box sx={{ maxWidth: "1280px", width: "100%", padding: 3 }}>
+            <Box sx={{ maxWidth: "1280px", width: "100%", paddingX: 3, paddingTop: "24px", paddingBottom: 3 }}>
                 {children}
             </Box>
         </Box>

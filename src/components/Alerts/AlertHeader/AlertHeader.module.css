@@ -1,0 +1,43 @@
+.AlertHeader {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+
+    .HeaderContent {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex-grow: 1;
+
+        .Breadcrumb {
+            color: var(--fgColor-muted);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            .Item {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .Title {
+            h2 {
+                font-weight: 400;
+            }
+        }
+
+        .Subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            color: var(--fgColor-muted);
+        }
+    }
+
+    .ButtonGroup {
+        display: flex;
+        gap: 8px;
+    }
+}

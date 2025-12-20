@@ -10,7 +10,7 @@ import {
 import {
   SearchIcon,
 } from "@primer/octicons-react";
-import { AlertsTable } from "@/components/AlertsTable";
+import { AlertsTable } from "@/components/Alerts/AlertsTable";
 import { SecurityLeftPanel } from "@/components/SecurityLeftPanel";
 import dependabotData from "@/mockData/dependabot.json";
 

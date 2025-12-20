@@ -1,6 +1,8 @@
 "use client";
 import { use } from "react";
-import { Box, Heading } from "@primer/react";
+import { Box, Button } from "@primer/react";
+import { AlertHeader } from "@/components/Alerts/AlertHeader";
+import dependabotData from "@/mockData/dependabot.json";
 
 export default function DependabotAlertDetailPage({
     params,
@@ -8,15 +10,25 @@ export default function DependabotAlertDetailPage({
     params: Promise<{ slug: string; id: string }>;
 }) {
     const { slug, id } = use(params);
+    const alertData = dependabotData[0]; // Using first alert for prototype
+
+    // Build subtitle the same way as AlertsTableItem
+    const detectedIn = `${alertData.dependency.package.name} (${alertData.dependency.package.ecosystem})`;
+    const fileName = alertData.dependency.manifest_path;
+    const subtitle = [detectedIn, fileName].filter(Boolean).join(' • ');
+    const title = alertData.security_advisory?.summary || 'Dependency Alert';
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <Heading as="h2" sx={{ fontSize: 24, fontWeight: 600, mb: 3 }}>
-                Dependabot Alert #{id}
-            </Heading>
-            <Box>
-                <p>Alert detail page for {slug}</p>
-            </Box>
+            <AlertHeader
+                alertStatus={alertData.state as "open" | "dismissed" | "fixed"}
+                title={title}
+                subtitleContent={subtitle}
+                timestamp={alertData.created_at}
+                buttonGroup={
+                    <Button variant="secondary">Dismiss alert</Button>
+                }
+            />
         </Box>
     );
 }

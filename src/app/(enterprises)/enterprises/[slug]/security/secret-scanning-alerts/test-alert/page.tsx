@@ -1,6 +1,8 @@
 "use client";
 import { use } from "react";
-import { Box, Heading } from "@primer/react";
+import { Box, Button } from "@primer/react";
+import { AlertHeader } from "@/components/Alerts/AlertHeader";
+import secretScanningData from "@/mockData/secret-scanning.json";
 
 export default function SecretScanningAlertDetailPage({
     params,
@@ -8,15 +10,25 @@ export default function SecretScanningAlertDetailPage({
     params: Promise<{ slug: string; id: string }>;
 }) {
     const { slug, id } = use(params);
+    const alertData = secretScanningData[0]; // Using first alert for prototype
+
+    // Build subtitle the same way as AlertsTableItem
+    const detectedIn = alertData.validity ? `Validity: ${alertData.validity}` : 'Secret detected';
+    const fileName = alertData.secret;
+    const subtitle = [detectedIn, fileName].filter(Boolean).join(' • ');
+    const title = alertData.secret_type_display_name;
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <Heading as="h2" sx={{ fontSize: 24, fontWeight: 600, mb: 3 }}>
-                Secret Scanning Alert #{id}
-            </Heading>
-            <Box>
-                <p>Alert detail page for {slug}</p>
-            </Box>
+            <AlertHeader
+                alertStatus={alertData.state as "open" | "dismissed" | "fixed"}
+                title={title}
+                subtitleContent={subtitle}
+                timestamp={alertData.created_at}
+                buttonGroup={
+                    <Button variant="secondary">Dismiss alert</Button>
+                }
+            />
         </Box>
     );
 }
