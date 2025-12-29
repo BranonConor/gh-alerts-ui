@@ -44,6 +44,7 @@ export function AlertHeader({ alertStatus = 'open', subtitleContent, timestamp, 
                 <div className={styles.Subtitle}>
                     <AlertStateLabel variant={alertStatus} />
                     <Text size='medium'>{subtitleContent}</Text>
+                    <Text size='medium'>{' • '}</Text>
                     <Text size='medium'>{timestamp && new Date(timestamp).toLocaleString()}</Text>
                 </div>
             </div>

@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.leftPanel {
+    flex-grow: 1;
+    background-color: #fff5f8;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.rightPanel {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .rightPanel {
+        width: 100%;
+    }
+}

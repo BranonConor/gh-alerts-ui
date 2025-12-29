@@ -1,0 +1,29 @@
+.AlertMetadataFieldTitle {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.TitleText {
+    font-family: var(--fontStack-sansSerif) !important;
+    font-weight: var(--base-text-weight-normal) !important;
+    color: var(--fgColor-muted) !important;
+    font-size: var(--base-size-12) !important;
+}
+
+.NonInteractive {
+    pointer-events: none;
+    cursor: default;
+}
+
+.NonInteractive:hover {
+    background-color: transparent !important;
+}
+
+.NonInteractive:active {
+    background-color: transparent !important;
+}
+
+.NonInteractive:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}

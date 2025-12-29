@@ -1,0 +1,47 @@
+.AlertMetadataField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-8);
+
+    .TitleContainer {
+        padding: var(--control-medium-paddingBlock) var(--control-medium-paddingInline-condensed);
+        font-weight: 600;
+        font-size: var(--text-body-size-medium);
+        line-height: var(--text-body-lineHeight-medium);
+        color: var(--fgColor-default);
+    }
+
+    .ActionItem {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .Content {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .NonInteractive {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .NonInteractive:hover {
+        background-color: transparent !important;
+    }
+
+    .NonInteractive:active {
+        background-color: transparent !important;
+    }
+
+    .NonInteractive:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .Divider {
+        margin: var(--base-size-8);
+    }
+}
