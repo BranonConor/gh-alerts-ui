@@ -2,8 +2,31 @@
 import { use, useState } from "react";
 import { Box, Button } from "@primer/react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
-import { DismissAlertModal } from "@/components/DismissAlertModal";
+import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
 import secretScanningData from "@/mockData/secret-scanning.json";
+
+const SECRET_SCANNING_DISMISSAL_REASONS: DismissalReason[] = [
+    {
+        value: "revoked",
+        label: "Revoked",
+        caption: "This secret has been revoked",
+    },
+    {
+        value: "used-in-tests",
+        label: "Used in tests",
+        caption: "This secret is not in production code",
+    },
+    {
+        value: "false-positive",
+        label: "False positive",
+        caption: "This alert is not valid",
+    },
+    {
+        value: "wont-fix",
+        label: "Won't fix",
+        caption: "This alert is not relevant",
+    },
+];
 
 export default function SecretScanningAlertDetailPage({
     params,
@@ -21,8 +44,10 @@ export default function SecretScanningAlertDetailPage({
     const title = alertData.secret_type_display_name;
 
     const handleDismiss = (reason: string, comment: string) => {
-        console.log('Dismissing alert:', { reason, comment });
-        // Handle dismissal logic here
+        const message = comment
+            ? `Dismissal Reason: ${reason}\n\nComment: ${comment}`
+            : `Dismissal Reason: ${reason}`;
+        alert(message);
     };
 
     return (
@@ -40,6 +65,7 @@ export default function SecretScanningAlertDetailPage({
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onDismiss={handleDismiss}
+                dismissalReasons={SECRET_SCANNING_DISMISSAL_REASONS}
             />
         </Box>
     );

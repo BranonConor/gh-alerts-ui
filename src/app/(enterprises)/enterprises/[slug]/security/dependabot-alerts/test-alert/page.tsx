@@ -2,8 +2,31 @@
 import { use, useState } from "react";
 import { Box, Button } from "@primer/react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
-import { DismissAlertModal } from "@/components/DismissAlertModal";
+import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
 import dependabotData from "@/mockData/dependabot.json";
+
+const DEPENDABOT_DISMISSAL_REASONS: DismissalReason[] = [
+    {
+        value: "fix-started",
+        label: "A fix has already been started",
+    },
+    {
+        value: "no-bandwidth",
+        label: "No bandwidth to fix this",
+    },
+    {
+        value: "tolerable-risk",
+        label: "Risk is tolerable to this project",
+    },
+    {
+        value: "inaccurate",
+        label: "This alert is inaccurate or incorrect",
+    },
+    {
+        value: "not-used",
+        label: "Vulnerable code is not actually used",
+    },
+];
 
 export default function DependabotAlertDetailPage({
     params,
@@ -21,8 +44,10 @@ export default function DependabotAlertDetailPage({
     const title = alertData.security_advisory?.summary || 'Dependency Alert';
 
     const handleDismiss = (reason: string, comment: string) => {
-        console.log('Dismissing alert:', { reason, comment });
-        // Handle dismissal logic here
+        const message = comment
+            ? `Dismissal Reason: ${reason}\n\nComment: ${comment}`
+            : `Dismissal Reason: ${reason}`;
+        alert(message);
     };
 
     return (
@@ -40,6 +65,7 @@ export default function DependabotAlertDetailPage({
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onDismiss={handleDismiss}
+                dismissalReasons={DEPENDABOT_DISMISSAL_REASONS}
             />
         </Box>
     );

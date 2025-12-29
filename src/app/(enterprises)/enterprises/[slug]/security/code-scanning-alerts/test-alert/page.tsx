@@ -2,8 +2,26 @@
 import { use, useState } from "react";
 import { Box, Button } from "@primer/react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
-import { DismissAlertModal } from "@/components/DismissAlertModal";
+import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
 import codeScanningData from "@/mockData/code-scanning.json";
+
+const CODE_SCANNING_DISMISSAL_REASONS: DismissalReason[] = [
+    {
+        value: "false-positive",
+        label: "False positive",
+        caption: "This alert is not valid",
+    },
+    {
+        value: "used-in-tests",
+        label: "Used in tests",
+        caption: "This alert is not in production code",
+    },
+    {
+        value: "wont-fix",
+        label: "Won't fix",
+        caption: "This alert is not relevant",
+    },
+];
 
 export default function CodeScanningAlertDetailPage({
     params,
@@ -21,8 +39,10 @@ export default function CodeScanningAlertDetailPage({
     const title = alertData.rule.description;
 
     const handleDismiss = (reason: string, comment: string) => {
-        console.log('Dismissing alert:', { reason, comment });
-        // Handle dismissal logic here
+        const message = comment
+            ? `Dismissal Reason: ${reason}\n\nComment: ${comment}`
+            : `Dismissal Reason: ${reason}`;
+        alert(message);
     };
 
     return (
@@ -40,6 +60,7 @@ export default function CodeScanningAlertDetailPage({
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onDismiss={handleDismiss}
+                dismissalReasons={CODE_SCANNING_DISMISSAL_REASONS}
             />
         </Box>
     );

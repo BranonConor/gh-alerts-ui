@@ -2,26 +2,50 @@
 import { useState } from "react";
 import {
     Dialog,
-    Button,
     FormControl,
     Radio,
     RadioGroup,
     Textarea,
-    Box,
     ActionList,
 } from "@primer/react";
 import styles from "./DismissAlert.module.css";
 
-interface DismissAlertModalProps {
+export interface DismissalReason {
+    value: string;
+    label: string;
+    caption?: string;
+}
+
+export interface DismissAlertModalProps {
     isOpen: boolean;
     onClose: () => void;
     onDismiss: (reason: string, comment: string) => void;
+    dismissalReasons?: DismissalReason[];
 }
+
+const DEFAULT_DISMISSAL_REASONS: DismissalReason[] = [
+    {
+        value: "false-positive",
+        label: "Won't fix",
+        caption: "This alert is inaccurate or incorrect",
+    },
+    {
+        value: "wont-fix",
+        label: "Risk is tolerable",
+        caption: "The risk of this alert is tolerable to the organization",
+    },
+    {
+        value: "used-in-tests",
+        label: "Inaccurate",
+        caption: "The alert is not correct and needs to be reviewed",
+    },
+];
 
 export function DismissAlertModal({
     isOpen,
     onClose,
     onDismiss,
+    dismissalReasons = DEFAULT_DISMISSAL_REASONS,
 }: DismissAlertModalProps) {
     const [selectedReason, setSelectedReason] = useState("");
     const [comment, setComment] = useState("");
@@ -70,27 +94,17 @@ export function DismissAlertModal({
                     <RadioGroup.Label className={styles.RadioGroupLabel}>
                         Select a reason to dismiss this alert.
                     </RadioGroup.Label>
-                    <FormControl>
-                        <Radio value="false-positive" />
-                        <FormControl.Label>Won't fix</FormControl.Label>
-                        <FormControl.Caption>
-                            This alert is inaccurate or incorrect
-                        </FormControl.Caption>
-                    </FormControl>
-                    <FormControl>
-                        <Radio value="wont-fix" />
-                        <FormControl.Label>Risk is tolerable</FormControl.Label>
-                        <FormControl.Caption>
-                            The risk of this alert is tolerable to the organization
-                        </FormControl.Caption>
-                    </FormControl>
-                    <FormControl>
-                        <Radio value="used-in-tests" />
-                        <FormControl.Label>Inaccurate</FormControl.Label>
-                        <FormControl.Caption>
-                            The alert is not correct and needs to be reviewed
-                        </FormControl.Caption>
-                    </FormControl>
+                    {dismissalReasons.map((reason) => (
+                        <FormControl key={reason.value}>
+                            <Radio value={reason.value} />
+                            <FormControl.Label>{reason.label}</FormControl.Label>
+                            {reason.caption && (
+                                <FormControl.Caption>
+                                    {reason.caption}
+                                </FormControl.Caption>
+                            )}
+                        </FormControl>
+                    ))}
                 </RadioGroup>
 
                 <ActionList.Divider />
