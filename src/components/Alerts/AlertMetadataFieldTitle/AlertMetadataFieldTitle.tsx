@@ -9,12 +9,12 @@ export interface AlertMetadataFieldTitleProps extends Omit<ActionListItemProps, 
     onClick?: () => void;
 }
 
-export const AlertMetadataFieldTitle = forwardRef<HTMLElement, AlertMetadataFieldTitleProps>(
+export const AlertMetadataFieldTitle = forwardRef<HTMLLIElement, AlertMetadataFieldTitleProps>(
     ({ title, trailingVisual, isInteractive = false, onClick, className, ...restProps }, ref) => {
         const itemClassName = `${styles.AlertMetadataFieldTitle} ${!isInteractive ? styles.NonInteractive : ''} ${className || ''}`.trim();
 
         return (
-            <ActionList.Item ref={ref} className={itemClassName} onClick={onClick} {...restProps}>
+            <ActionList.Item ref={ref as any} className={itemClassName} onClick={onClick} {...restProps}>
                 <Text className={styles.TitleText}>{title}</Text>
                 {trailingVisual && (
                     <ActionList.TrailingVisual>
