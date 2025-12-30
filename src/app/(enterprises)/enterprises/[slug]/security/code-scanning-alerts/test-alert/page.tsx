@@ -88,7 +88,7 @@ export default function CodeScanningAlertDetailPage({
 }: {
     params: Promise<{ slug: string; id: string }>;
 }) {
-    const { slug, id } = use(params);
+    const { slug: _slug, id: _id } = use(params);
     const alertData = codeScanningData[0]; // Using first alert for prototype
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAssigneesOpen, setIsAssigneesOpen] = useState(false);
