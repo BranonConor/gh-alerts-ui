@@ -7,7 +7,62 @@ import { AlertDetailLayout } from "@/components/Alerts/AlertDetailLayout";
 import { AlertMetadataField } from "@/components/Alerts/AlertMetadataField";
 import { AlertMetadataFieldTitle } from "@/components/Alerts/AlertMetadataFieldTitle";
 import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
+import { AssigneesOverlay } from "@/components/Alerts/AssigneesOverlay";
 import secretScanningData from "@/mockData/secret-scanning.json";
+
+const MOCK_GROUP_ASSIGNEES = [
+    {
+        id: "copilot",
+        login: "Copilot",
+        name: "Your AI pair programmer",
+        type: "bot" as const,
+    },
+];
+
+const MOCK_SUGGESTIONS = [
+    {
+        id: "branonconor",
+        login: "BranonConor",
+        name: "Branon Eusebio",
+        type: "user" as const,
+    },
+    {
+        id: "2ley",
+        login: "2ley",
+        name: "Eric Tooley",
+        type: "user" as const,
+    },
+    {
+        id: "a-s100",
+        login: "a-s100",
+        name: "",
+        type: "user" as const,
+    },
+    {
+        id: "a-schur",
+        login: "a-schur",
+        name: "",
+        type: "user" as const,
+    },
+    {
+        id: "aaroncathcart",
+        login: "aaroncathcart",
+        name: "Aaron Cathcart",
+        type: "user" as const,
+    },
+    {
+        id: "aaronwaggener",
+        login: "aaronwaggener",
+        name: "Aaron Waggener",
+        type: "user" as const,
+    },
+    {
+        id: "aashah",
+        login: "aashah",
+        name: "Aakash Shah",
+        type: "user" as const,
+    },
+];
 
 const SECRET_SCANNING_DISMISSAL_REASONS: DismissalReason[] = [
     {
@@ -90,10 +145,13 @@ export default function SecretScanningAlertDetailPage({
                                     />
                                 )}
                             >
-                                <ActionList>
-                                    <ActionList.Item>Assign to user</ActionList.Item>
-                                    <ActionList.Item>Remove assignee</ActionList.Item>
-                                </ActionList>
+                                <AssigneesOverlay
+                                    groupAssignees={MOCK_GROUP_ASSIGNEES}
+                                    suggestions={MOCK_SUGGESTIONS}
+                                    onAssigneeToggle={(id, selected) => {
+                                        console.log(`Assignee ${id} ${selected ? 'selected' : 'deselected'}`);
+                                    }}
+                                />
                             </AnchoredOverlay>
                             <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
                         </AlertMetadataField>
