@@ -45,3 +45,7 @@
         margin: var(--base-size-8);
     }
 }
+
+.NoGap {
+    gap: 0;
+}

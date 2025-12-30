@@ -127,7 +127,7 @@ export default function CodeScanningAlertDetailPage({
                                 <Label variant="danger">Critical</Label>
                             </div>
                         </AlertMetadataField>
-                        <AlertMetadataField showDivider={true}>
+                        <AlertMetadataField showDivider={true} removeGap={true}>
                             <AnchoredOverlay
                                 open={isAssigneesOpen}
                                 onOpen={() => setIsAssigneesOpen(true)}

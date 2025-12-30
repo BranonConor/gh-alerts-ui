@@ -132,7 +132,7 @@ export default function DependabotAlertDetailPage({
                                 <Label variant="danger">Critical</Label>
                             </div>
                         </AlertMetadataField>
-                        <AlertMetadataField showDivider={true}>
+                        <AlertMetadataField showDivider={true} removeGap={true}>
                             <AnchoredOverlay
                                 open={isAssigneesOpen}
                                 onOpen={() => setIsAssigneesOpen(true)}
@@ -174,10 +174,8 @@ export default function DependabotAlertDetailPage({
                         <AlertMetadataField showDivider={false}>
                             <AlertMetadataFieldTitle title="Placeholder Title" />
                             <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
-                        </AlertMetadataField>                        <AlertMetadataField showDivider={false}>
-                            <AlertMetadataFieldTitle title="Placeholder Title" />
-                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
-                        </AlertMetadataField>                    </div>
+                        </AlertMetadataField>
+                    </div>
                 }
             />
             <DismissAlertModal
