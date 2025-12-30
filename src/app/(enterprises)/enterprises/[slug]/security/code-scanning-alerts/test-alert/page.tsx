@@ -1,13 +1,14 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button, ActionList, AnchoredOverlay } from "@primer/react";
-import { GearIcon } from "@primer/octicons-react";
+import { Box, Button, ActionList, AnchoredOverlay, Label, Avatar, Text } from "@primer/react";
+import { GearIcon, CopilotIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/Alerts/AlertDetailLayout";
 import { AlertMetadataField } from "@/components/Alerts/AlertMetadataField";
 import { AlertMetadataFieldTitle } from "@/components/Alerts/AlertMetadataFieldTitle";
 import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
 import { AssigneesOverlay } from "@/components/Alerts/AssigneesOverlay";
+import styles from "./page.module.css";
 import codeScanningData from "@/mockData/code-scanning.json";
 
 const MOCK_GROUP_ASSIGNEES = [
@@ -122,7 +123,9 @@ export default function CodeScanningAlertDetailPage({
                     <ActionList>
                         <AlertMetadataField showDivider={true}>
                             <AlertMetadataFieldTitle title="Severity" />
-                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
+                            <div className={styles.ContentContainer}>
+                                <Label variant="danger">Critical</Label>
+                            </div>
                         </AlertMetadataField>
                         <AlertMetadataField showDivider={true}>
                             <AnchoredOverlay
@@ -148,9 +151,22 @@ export default function CodeScanningAlertDetailPage({
                                     }}
                                 />
                             </AnchoredOverlay>
-                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
+                            <div className={styles.AssigneesList}>
+                                <ActionList.Item>
+                                    <ActionList.LeadingVisual>
+                                        <div className={styles.CopilotIconContainer}>
+                                            <CopilotIcon size={16} className={styles.CopilotIconOverride} />
+                                        </div>
+                                    </ActionList.LeadingVisual>
+                                    <Text className={styles.AssigneeText}>Copilot</Text>
+                                </ActionList.Item>
+                            </div>
                         </AlertMetadataField>
                         <AlertMetadataField showDivider={true}>
+                            <AlertMetadataFieldTitle title="Placeholder Title" />
+                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
+                        </AlertMetadataField>
+                        <AlertMetadataField showDivider={false}>
                             <AlertMetadataFieldTitle title="Placeholder Title" />
                             <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
                         </AlertMetadataField>
