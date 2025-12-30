@@ -1,6 +1,6 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button, ActionList, AnchoredOverlay, Label, Avatar, Text } from "@primer/react";
+import { Box, Button, ActionList, AnchoredOverlay, Label, Text } from "@primer/react";
 import { GearIcon, CopilotIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/Alerts/AlertDetailLayout";

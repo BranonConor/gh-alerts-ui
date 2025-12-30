@@ -14,7 +14,7 @@ export const AlertMetadataFieldTitle = forwardRef<HTMLLIElement, AlertMetadataFi
         const itemClassName = `${styles.AlertMetadataFieldTitle} ${!isInteractive ? styles.NonInteractive : ''} ${className || ''}`.trim();
 
         return (
-            <ActionList.Item ref={ref as any} className={itemClassName} onClick={onClick} {...restProps}>
+            <ActionList.Item ref={ref as React.Ref<HTMLLIElement>} className={itemClassName} onClick={onClick} {...restProps}>
                 <Text className={styles.TitleText}>{title}</Text>
                 {trailingVisual && (
                     <ActionList.TrailingVisual>
@@ -25,3 +25,5 @@ export const AlertMetadataFieldTitle = forwardRef<HTMLLIElement, AlertMetadataFi
         );
     }
 );
+
+AlertMetadataFieldTitle.displayName = 'AlertMetadataFieldTitle';

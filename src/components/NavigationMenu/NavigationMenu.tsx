@@ -5,7 +5,6 @@ import {
     ActionMenu,
     Box,
     IconButton,
-    Text,
 } from "@primer/react";
 import { KebabHorizontalIcon } from "@primer/octicons-react";
 import { enterpriseAccounts } from "@/defaults/accounts/enterprises";

@@ -1,4 +1,4 @@
-import { Link as PrimerLink, Text } from "@primer/react";
+import { Text } from "@primer/react";
 import { LockIcon, ShieldIcon, GlobeIcon } from "@primer/octicons-react";
 import styles from "./AlertsTableItem.module.css";
 import Link from "next/link";
