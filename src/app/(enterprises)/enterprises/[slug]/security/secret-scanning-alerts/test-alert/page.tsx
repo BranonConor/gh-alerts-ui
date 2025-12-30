@@ -1,14 +1,14 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button, ActionList, AnchoredOverlay, Label, Text } from "@primer/react";
-import { GearIcon, CopilotIcon } from "@primer/octicons-react";
-import { AlertHeader } from "@/components/Alerts/AlertHeader";
-import { AlertDetailLayout } from "@/components/Alerts/AlertDetailLayout";
-import { AlertMetadataField } from "@/components/Alerts/AlertMetadataField";
-import { AlertMetadataFieldTitle } from "@/components/Alerts/AlertMetadataFieldTitle";
-import { DismissAlertModal, DismissalReason } from "@/components/Alerts/DismissAlertModal";
-import { AssigneesOverlay } from "@/components/Alerts/AssigneesOverlay";
-import styles from "./page.module.css";
+import { Box, Button } from "@primer/react";
+import { AlertHeader } from "@/components/alerts/AlertHeader";
+import { AlertDetailLayout } from "@/components/alerts/AlertDetailLayout";
+import { AlertMetadataField } from "@/components/alerts/AlertMetadataField";
+import { AlertMetadataFieldTitle } from "@/components/alerts/AlertMetadataFieldTitle";
+import { AlertMetadataFieldContent } from "@/components/alerts/AlertMetadataFieldContent";
+import { DismissAlertModal, DismissalReason } from "@/components/alerts/DismissAlertModal";
+import { Severity } from "@/components/alerts/fields/Severity";
+import { Assignees } from "@/components/alerts/fields/Assignees";
 import secretScanningData from "@/mockData/secret-scanning.json";
 
 const MOCK_GROUP_ASSIGNEES = [
@@ -96,7 +96,6 @@ export default function SecretScanningAlertDetailPage({
     const { slug: _slug, id: _id } = use(params);
     const alertData = secretScanningData[0]; // Using first alert for prototype
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isAssigneesOpen, setIsAssigneesOpen] = useState(false);
 
     // Build subtitle the same way as AlertsTableItem
     const detectedIn = alertData.validity ? `Validity: ${alertData.validity}` : 'Secret detected';
@@ -125,57 +124,22 @@ export default function SecretScanningAlertDetailPage({
             <AlertDetailLayout
                 leftContent={<div>Left panel content - Main alert details</div>}
                 rightContent={
-                    <ActionList>
+                    <div>
+                        <Severity severity="Critical" />
                         <AlertMetadataField showDivider={true}>
-                            <AlertMetadataFieldTitle title="Severity" />
-                            <div className={styles.ContentContainer}>
-                                <Label variant="danger">Critical</Label>
-                            </div>
+                            <AlertMetadataFieldTitle title="Secret type" />
+                            <AlertMetadataFieldContent>
+                                <div>generic_private_key</div>
+                            </AlertMetadataFieldContent>
                         </AlertMetadataField>
-                        <AlertMetadataField showDivider={true} removeGap={true}>
-                            <AnchoredOverlay
-                                open={isAssigneesOpen}
-                                onOpen={() => setIsAssigneesOpen(true)}
-                                onClose={() => setIsAssigneesOpen(false)}
-                                width="medium"
-                                renderAnchor={(props) => (
-                                    <AlertMetadataFieldTitle
-                                        {...props}
-                                        title="Assignees"
-                                        isInteractive={true}
-                                        trailingVisual={<GearIcon />}
-                                        onClick={() => setIsAssigneesOpen(!isAssigneesOpen)}
-                                    />
-                                )}
-                            >
-                                <AssigneesOverlay
-                                    groupAssignees={MOCK_GROUP_ASSIGNEES}
-                                    suggestions={MOCK_SUGGESTIONS}
-                                    onAssigneeToggle={(id, selected) => {
-                                        console.log(`Assignee ${id} ${selected ? 'selected' : 'deselected'}`);
-                                    }}
-                                />
-                            </AnchoredOverlay>
-                            <div className={styles.AssigneesList}>
-                                <ActionList.Item>
-                                    <ActionList.LeadingVisual>
-                                        <div className={styles.CopilotIconContainer}>
-                                            <CopilotIcon size={16} className={styles.CopilotIconOverride} />
-                                        </div>
-                                    </ActionList.LeadingVisual>
-                                    <Text className={styles.AssigneeText}>Copilot</Text>
-                                </ActionList.Item>
-                            </div>
-                        </AlertMetadataField>
-                        <AlertMetadataField showDivider={true}>
-                            <AlertMetadataFieldTitle title="Placeholder Title" />
-                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
-                        </AlertMetadataField>
-                        <AlertMetadataField showDivider={false}>
-                            <AlertMetadataFieldTitle title="Placeholder Title" />
-                            <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
-                        </AlertMetadataField>
-                    </ActionList>
+                        <Assignees
+                            groupAssignees={MOCK_GROUP_ASSIGNEES}
+                            suggestions={MOCK_SUGGESTIONS}
+                            onAssigneeToggle={(id, selected) => {
+                                console.log(`Assignee ${id} ${selected ? 'selected' : 'deselected'}`);
+                            }}
+                        />
+                    </div>
                 }
             />
             <DismissAlertModal

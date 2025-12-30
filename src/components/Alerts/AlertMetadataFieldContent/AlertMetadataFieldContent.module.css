@@ -1,0 +1,9 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+    /* match the ActionList.Item component so the spacing is consistent */
+    padding: var(--base-size-6) var(--base-size-8);
+    font-size: var(--text-body-size-small);
+    line-height: var(--text-body-lineHeight-small);
+    color: var(--fgColor-muted);
+}

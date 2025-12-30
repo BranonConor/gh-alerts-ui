@@ -5,7 +5,7 @@
 
 .TitleText {
     font-family: var(--fontStack-sansSerif) !important;
-    font-weight: var(--base-text-weight-normal) !important;
+    font-weight: var(--base-text-weight-semibold) !important;
     color: var(--fgColor-muted) !important;
     font-size: var(--base-size-12) !important;
 }

@@ -1,0 +1,12 @@
+.LabelWrapper {
+    display: flex;
+    gap: var(--base-size-4);
+    flex-wrap: wrap;
+}
+
+.OverlayContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-8);
+    padding: var(--base-size-8);
+}
