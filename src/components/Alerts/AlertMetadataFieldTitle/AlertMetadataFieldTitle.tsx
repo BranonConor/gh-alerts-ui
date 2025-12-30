@@ -1,28 +1,27 @@
-import { ReactNode } from "react";
-import { ActionList, Text } from "@primer/react";
+import { forwardRef, ReactNode } from "react";
+import { ActionList, ActionListItemProps, Text } from "@primer/react";
 import styles from "./AlertMetadataFieldTitle.module.css";
 
-export interface AlertMetadataFieldTitleProps {
+export interface AlertMetadataFieldTitleProps extends Omit<ActionListItemProps, 'children' | 'onSelect' | 'role'> {
     title: string;
     trailingVisual?: ReactNode;
     isInteractive?: boolean;
+    onClick?: () => void;
 }
 
-export function AlertMetadataFieldTitle({
-    title,
-    trailingVisual,
-    isInteractive = false,
-}: AlertMetadataFieldTitleProps) {
-    const itemClassName = `${styles.AlertMetadataFieldTitle} ${!isInteractive ? styles.NonInteractive : ''}`.trim();
+export const AlertMetadataFieldTitle = forwardRef<HTMLElement, AlertMetadataFieldTitleProps>(
+    ({ title, trailingVisual, isInteractive = false, onClick, className, ...restProps }, ref) => {
+        const itemClassName = `${styles.AlertMetadataFieldTitle} ${!isInteractive ? styles.NonInteractive : ''} ${className || ''}`.trim();
 
-    return (
-        <ActionList.Item className={itemClassName}>
-            <Text className={styles.TitleText}>{title}</Text>
-            {trailingVisual && (
-                <ActionList.TrailingVisual>
-                    {trailingVisual}
-                </ActionList.TrailingVisual>
-            )}
-        </ActionList.Item>
-    );
-}
+        return (
+            <ActionList.Item ref={ref} className={itemClassName} onClick={onClick} {...restProps}>
+                <Text className={styles.TitleText}>{title}</Text>
+                {trailingVisual && (
+                    <ActionList.TrailingVisual>
+                        {trailingVisual}
+                    </ActionList.TrailingVisual>
+                )}
+            </ActionList.Item>
+        );
+    }
+);

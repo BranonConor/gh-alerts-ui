@@ -1,6 +1,6 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button, ActionList } from "@primer/react";
+import { Box, Button, ActionList, AnchoredOverlay } from "@primer/react";
 import { GearIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/Alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/Alerts/AlertDetailLayout";
@@ -35,6 +35,7 @@ export default function CodeScanningAlertDetailPage({
     const { slug, id } = use(params);
     const alertData = codeScanningData[0]; // Using first alert for prototype
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAssigneesOpen, setIsAssigneesOpen] = useState(false);
 
     // Build subtitle the same way as AlertsTableItem
     const detectedIn = `${alertData.tool.name} v${alertData.tool.version}`;
@@ -69,11 +70,26 @@ export default function CodeScanningAlertDetailPage({
                             <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
                         </AlertMetadataField>
                         <AlertMetadataField showDivider={true}>
-                            <AlertMetadataFieldTitle
-                                title="Assignees"
-                                isInteractive={true}
-                                trailingVisual={<GearIcon />}
-                            />
+                            <AnchoredOverlay
+                                open={isAssigneesOpen}
+                                onOpen={() => setIsAssigneesOpen(true)}
+                                onClose={() => setIsAssigneesOpen(false)}
+                                width="medium"
+                                renderAnchor={(props) => (
+                                    <AlertMetadataFieldTitle
+                                        {...props}
+                                        title="Assignees"
+                                        isInteractive={true}
+                                        trailingVisual={<GearIcon />}
+                                        onClick={() => setIsAssigneesOpen(!isAssigneesOpen)}
+                                    />
+                                )}
+                            >
+                                <ActionList>
+                                    <ActionList.Item>Assign to user</ActionList.Item>
+                                    <ActionList.Item>Remove assignee</ActionList.Item>
+                                </ActionList>
+                            </AnchoredOverlay>
                             <div style={{ backgroundColor: 'var(--bgColor-muted)', borderRadius: '6px', flexGrow: 1, margin: '0 8px', height: '20px' }} />
                         </AlertMetadataField>
                         <AlertMetadataField showDivider={true}>
