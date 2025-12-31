@@ -1,6 +1,7 @@
 "use client";
 import { use, useState } from "react";
 import { Box, Button } from "@primer/react";
+import { InfoIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/alerts/AlertDetailLayout";
 import { AlertMetadataField } from "@/components/alerts/AlertMetadataField";
@@ -13,6 +14,7 @@ import { Tags } from "@/components/alerts/fields/Tags";
 import { SecurityCampaigns } from "@/components/alerts/fields/SecurityCampaigns";
 import { Development } from "@/components/alerts/fields/Development";
 import { AffectedBranches } from "@/components/alerts/fields/AffectedBranches";
+import { DescriptionBox } from "@/components/alerts/content/DescriptionBox";
 import codeScanningData from "@/mockData/code-scanning.json";
 
 const MOCK_GROUP_ASSIGNEES = [
@@ -151,7 +153,26 @@ export default function CodeScanningAlertDetailPage({
                 }
             />
             <AlertDetailLayout
-                leftContent={<div>Left panel content - Main alert details</div>}
+                leftContent={
+                    <DescriptionBox
+                        sections={[
+                            {
+                                leadingVisual: <InfoIcon />,
+                                title: "Alert description title",
+                                caption: "Text",
+                                trailingContent: <InfoIcon />,
+                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                            },
+                            {
+                                leadingVisual: <InfoIcon />,
+                                title: "Remediating this alert",
+                                caption: "Text",
+                                trailingContent: <InfoIcon />,
+                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                            }
+                        ]}
+                    />
+                }
                 rightContent={
                     <div>
                         <Severity severity="Critical" />

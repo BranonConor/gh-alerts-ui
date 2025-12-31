@@ -1,0 +1,53 @@
+.DescriptionBox {
+    border: 1px solid var(--borderColor-default);
+    border-radius: var(--base-size-6);
+    overflow: hidden;
+    background-color: var(--bgColor-default);
+}
+
+.Section:not(:last-child) {
+    border-bottom: 1px solid var(--borderColor-default);
+}
+
+.TitleSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--base-size-16);
+    background-color: var(--bgColor-muted);
+    border-bottom: 1px solid var(--borderColor-default);
+}
+
+.TitleLeft {
+    display: flex;
+    align-items: center;
+    gap: var(--base-size-8);
+}
+
+.LeadingVisual {
+    display: flex;
+    align-items: center;
+    color: var(--fgColor-muted);
+}
+
+.Title {
+    margin: 0;
+    font-size: var(--text-body-size-medium);
+    font-weight: var(--base-text-weight-semibold);
+    color: var(--fgColor-default);
+}
+
+.Caption {
+    color: var(--fgColor-muted);
+    font-size: var(--text-body-size-small);
+}
+
+.TrailingContent {
+    display: flex;
+    align-items: center;
+    color: var(--fgColor-muted);
+}
+
+.ContentSection {
+    padding: var(--base-size-16);
+}
