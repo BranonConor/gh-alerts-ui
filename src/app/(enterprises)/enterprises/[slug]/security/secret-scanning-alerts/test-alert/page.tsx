@@ -9,6 +9,7 @@ import { AlertMetadataFieldContent } from "@/components/alerts/AlertMetadataFiel
 import { DismissAlertModal, DismissalReason } from "@/components/alerts/DismissAlertModal";
 import { Severity } from "@/components/alerts/fields/Severity";
 import { Assignees } from "@/components/alerts/fields/Assignees";
+import { SecurityCampaigns } from "@/components/alerts/fields/SecurityCampaigns";
 import secretScanningData from "@/mockData/secret-scanning.json";
 
 const MOCK_GROUP_ASSIGNEES = [
@@ -139,6 +140,7 @@ export default function SecretScanningAlertDetailPage({
                                 console.log(`Assignee ${id} ${selected ? 'selected' : 'deselected'}`);
                             }}
                         />
+                        <SecurityCampaigns showDivider={false} />
                     </div>
                 }
             />

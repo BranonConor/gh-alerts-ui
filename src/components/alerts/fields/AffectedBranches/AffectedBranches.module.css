@@ -1,0 +1,26 @@
+.BranchesList {
+    display: flex;
+    flex-direction: column;
+}
+
+.ShieldIcon {
+    color: var(--fgColor-success);
+}
+
+.BranchTitle {
+    font-size: var(--text-body-size-small) !important;
+    font-weight: var(--base-text-weight-normal) !important;
+    font-family: var(--fontStack-sansSerif) !important;
+}
+
+.BranchCode {
+    font-family: var(--fontStack-monospace);
+    font-size: var(--text-body-size-small);
+    background-color: var(--bgColor-neutral-muted);
+    padding: 0.2em 0.4em;
+    border-radius: var(--borderRadius-small);
+}
+
+.BranchDescription {
+    font-family: var(--fontStack-sansSerif) !important;
+}

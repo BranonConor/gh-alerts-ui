@@ -1,0 +1,22 @@
+.CampaignsList {
+    display: flex;
+    flex-direction: column;
+}
+
+.CampaignName {
+    font-size: var(--text-body-size-small) !important;
+    font-weight: var(--base-text-weight-normal) !important;
+    font-family: var(--fontStack-sansSerif) !important;
+}
+
+.CampaignDescription {
+    font-family: var(--fontStack-sansSerif) !important;
+}
+
+.CampaignIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--bgColor-muted);
+    border: 1px solid var(--borderColor-default);
+}

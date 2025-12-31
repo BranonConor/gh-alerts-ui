@@ -10,6 +10,9 @@ import { DismissAlertModal, DismissalReason } from "@/components/alerts/DismissA
 import { Severity } from "@/components/alerts/fields/Severity";
 import { Assignees } from "@/components/alerts/fields/Assignees";
 import { Tags } from "@/components/alerts/fields/Tags";
+import { SecurityCampaigns } from "@/components/alerts/fields/SecurityCampaigns";
+import { Development } from "@/components/alerts/fields/Development";
+import { AffectedBranches } from "@/components/alerts/fields/AffectedBranches";
 import codeScanningData from "@/mockData/code-scanning.json";
 
 const MOCK_GROUP_ASSIGNEES = [
@@ -63,6 +66,36 @@ const MOCK_SUGGESTIONS = [
         login: "aashah",
         name: "Aakash Shah",
         type: "user" as const,
+    },
+];
+
+const MOCK_LINKED_PRS = [
+    {
+        id: "pr-64",
+        number: 64,
+        title: "Replace unsafe gets() with fgets()",
+        state: "draft" as const,
+    },
+];
+
+const MOCK_PR_SUGGESTIONS = [
+    {
+        id: "pr-61",
+        number: 61,
+        title: "Replace unsafe gets() in test.cpp for improved security",
+        state: "draft" as const,
+    },
+    {
+        id: "pr-63",
+        number: 63,
+        title: "Replace unsafe gets() with fgets() in test.cpp",
+        state: "draft" as const,
+    },
+    {
+        id: "pr-15",
+        number: 15,
+        title: "Potential fix for code scanning alert no. 15: Use of dangerous function",
+        state: "draft" as const,
     },
 ];
 
@@ -129,6 +162,15 @@ export default function CodeScanningAlertDetailPage({
                                 console.log(`Assignee ${id} ${selected ? 'selected' : 'deselected'}`);
                             }}
                         />
+                        <AffectedBranches />
+                        <Development
+                            linkedPullRequests={MOCK_LINKED_PRS}
+                            suggestions={MOCK_PR_SUGGESTIONS}
+                            onPullRequestToggle={(prId, selected) => {
+                                console.log(`PR ${prId} ${selected ? 'linked' : 'unlinked'}`);
+                            }}
+                        />
+                        <SecurityCampaigns />
                         <Tags />
                     </div>
                 }

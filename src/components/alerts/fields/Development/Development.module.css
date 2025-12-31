@@ -1,0 +1,19 @@
+.DevelopmentList {
+    display: flex;
+    flex-direction: column;
+}
+
+.PullRequestTitle {
+    font-size: var(--text-body-size-small) !important;
+    font-weight: var(--base-text-weight-normal) !important;
+    font-family: var(--fontStack-sansSerif) !important;
+}
+
+.PullRequestDescription {
+    font-family: var(--fontStack-sansSerif) !important;
+}
+
+.BranchLink {
+    color: var(--fgColor-accent);
+    text-decoration: underline;
+}
