@@ -32,7 +32,7 @@
 
 .Title {
     margin: 0;
-    font-size: var(--text-body-size-medium);
+    font-size: var(--text-title-size-small);
     font-weight: var(--base-text-weight-semibold);
     color: var(--fgColor-default);
 }
