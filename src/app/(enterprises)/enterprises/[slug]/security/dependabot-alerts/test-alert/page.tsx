@@ -1,7 +1,7 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button } from "@primer/react";
-import { InfoIcon } from "@primer/octicons-react";
+import { Box, Button, IconButton } from "@primer/react";
+import { AlertIcon, ChecklistIcon, CopyIcon, DependabotIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/alerts/AlertDetailLayout";
 import { AlertMetadataField } from "@/components/alerts/AlertMetadataField";
@@ -12,6 +12,7 @@ import { Severity } from "@/components/alerts/fields/Severity";
 import { Tags } from "@/components/alerts/fields/Tags";
 import { DescriptionBox } from "@/components/alerts/content/DescriptionBox";
 import dependabotData from "@/mockData/dependabot.json";
+import styles from "./page.module.css";
 
 const MOCK_GROUP_ASSIGNEES = [
     {
@@ -128,18 +129,65 @@ export default function DependabotAlertDetailPage({
                     <DescriptionBox
                         sections={[
                             {
-                                leadingVisual: <InfoIcon />,
-                                title: "Alert description title",
-                                caption: "Text",
-                                trailingContent: <InfoIcon />,
-                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                                leadingVisual: <AlertIcon />,
+                                title: "Package Vulnerability Found",
+                                content: (
+                                    <div>
+                                        <div className={styles.packageInfo}>
+                                            <div className={styles.packageRow}>
+                                                <div className={styles.packageColumn}>
+                                                    <span className={styles.packageLabel}>Package</span>
+                                                    <span className={styles.packageValue}>
+                                                        <span className={styles.packageName}>org.apache.activemq:activemq-client</span>{' '}
+                                                        <span className={styles.ecosystem}>(Maven)</span>
+                                                    </span>
+                                                </div>
+                                                <div className={styles.packageColumn}>
+                                                    <span className={styles.packageLabel}>Affected versions</span>
+                                                    <span className={styles.packageValue}>
+                                                        <span className={styles.versionText}>&lt; 5.15.16</span>
+                                                    </span>
+                                                </div>
+                                                <div className={styles.packageColumn}>
+                                                    <span className={styles.packageLabel}>Patched versions</span>
+                                                    <span className={styles.packageValue}>
+                                                        <span className={styles.versionText}>5.15.16</span>
+                                                        <CopyIcon className={styles.copyButton} />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className={styles.descriptionText}>
+                                            Apache ActiveMQ is vulnerable to Remote Code Execution. The vulnerability may allow a remote attacker with network access to a broker to run arbitrary shell commands by manipulating serialized class types in the OpenWire protocol to cause the broker to instantiate any class on the classpath.
+                                        </p>
+                                        <p className={styles.descriptionText}>
+                                            Users are recommended to upgrade to version 5.15.6, 5.16.7, or 5.18.3, which fixes the issue.
+                                        </p>
+                                    </div>
+                                )
                             },
                             {
-                                leadingVisual: <InfoIcon />,
+                                leadingVisual: <ChecklistIcon />,
                                 title: "Remediating this alert",
-                                caption: "Text",
-                                trailingContent: <InfoIcon />,
-                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                                content: (
+                                    <div className={styles.remediationContent}>
+                                        <p className={styles.remediationText}>
+                                            Upgrading <code>org.apache.activemq:activemq-client</code> will <a href="#" className={styles.remediationLink}>fix 7 Dependabot alerts</a> in <a href="#" className={styles.remediationLink}>assembly/src/release/examples/openwire/java/pom.xml</a>
+                                        </p>
+                                        <div className={styles.codeBlock}>
+                                            <div>&lt;<span className={styles.xmlTag}>dependency</span>&gt;</div>
+                                            <div>&nbsp;&nbsp;&lt;<span className={styles.xmlTag}>groupId</span>&gt;<span className={styles.xmlContent}>org.apache.activemq</span>&lt;/<span className={styles.xmlTag}>groupId</span>&gt;</div>
+                                            <div>&nbsp;&nbsp;&lt;<span className={styles.xmlTag}>artifactId</span>&gt;<span className={styles.xmlContent}>activemq-client</span>&lt;/<span className={styles.xmlTag}>artifactId</span>&gt;</div>
+                                            <div>&nbsp;&nbsp;&lt;<span className={styles.xmlTag}>version</span>&gt;<span className={styles.xmlContent}>[5.18.6,)</span>&lt;/<span className={styles.xmlTag}>version</span>&gt;</div>
+                                            <div>&lt;/<span className={styles.xmlTag}>dependency</span>&gt;</div>
+                                        </div>
+                                        <div className={styles.buttonContainer}>
+                                            <Button variant="primary" leadingVisual={DependabotIcon}>
+                                                Create Dependabot security update
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )
                             }
                         ]}
                     />

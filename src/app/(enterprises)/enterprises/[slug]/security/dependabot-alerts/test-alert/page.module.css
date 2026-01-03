@@ -37,3 +37,110 @@
 .LabelWrapper {
     display: flex;
 }
+
+.packageInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-12);
+    padding: var(--base-size-16);
+    background-color: var(--bgColor-muted);
+    border-radius: var(--borderRadius-medium);
+    margin-bottom: var(--base-size-12);
+}
+
+.packageRow {
+    display: flex;
+    gap: var(--base-size-24);
+}
+
+.packageColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-4);
+}
+
+.packageLabel {
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-normal);
+    color: var(--fgColor-muted);
+}
+
+.packageValue {
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-semibold);
+    color: var(--fgColor-default);
+}
+
+.packageName {
+    font-family: var(--fontStack-monospace);
+    font-weight: var(--base-text-weight-semibold);
+}
+
+.ecosystem {
+    color: var(--fgColor-muted);
+    font-weight: var(--base-text-weight-normal);
+}
+
+.versionText {
+    font-family: var(--fontStack-monospace);
+    font-size: var(--text-body-size-small);
+}
+
+.copyButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--base-size-4);
+    margin-left: var(--base-size-8);
+    vertical-align: middle;
+}
+
+.descriptionText {
+    font-size: var(--text-body-size-medium);
+    line-height: var(--text-body-lineHeight-medium);
+    color: var(--fgColor-default);
+    margin-bottom: var(--base-size-12);
+}
+
+.remediationContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-16);
+}
+
+.remediationText {
+    font-size: var(--text-body-size-medium);
+    line-height: var(--text-body-lineHeight-medium);
+    color: var(--fgColor-default);
+}
+
+.remediationLink {
+    color: var(--fgColor-link);
+    text-decoration: none;
+}
+
+.remediationLink:hover {
+    text-decoration: underline;
+}
+
+.codeBlock {
+    background-color: var(--bgColor-muted);
+    border-radius: var(--borderRadius-medium);
+    padding: var(--base-size-12);
+    font-family: var(--fontStack-monospace);
+    font-size: var(--text-body-size-small);
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.xmlTag {
+    color: var(--fgColor-success);
+}
+
+.xmlContent {
+    color: var(--fgColor-default);
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
