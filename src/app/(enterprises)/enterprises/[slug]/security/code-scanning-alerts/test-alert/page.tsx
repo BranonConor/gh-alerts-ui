@@ -1,12 +1,9 @@
 "use client";
 import { use, useState } from "react";
-import { Box, Button } from "@primer/react";
-import { InfoIcon } from "@primer/octicons-react";
+import { Box, Button, Label, IconButton } from "@primer/react";
+import { AlertIcon, ArrowDownIcon, ChecklistIcon, ChevronDownIcon, ChevronUpIcon, CopilotIcon, CopyIcon, UnfoldIcon } from "@primer/octicons-react";
 import { AlertHeader } from "@/components/alerts/AlertHeader";
 import { AlertDetailLayout } from "@/components/alerts/AlertDetailLayout";
-import { AlertMetadataField } from "@/components/alerts/AlertMetadataField";
-import { AlertMetadataFieldTitle } from "@/components/alerts/AlertMetadataFieldTitle";
-import { AlertMetadataFieldContent } from "@/components/alerts/AlertMetadataFieldContent";
 import { DismissAlertModal, DismissalReason } from "@/components/alerts/DismissAlertModal";
 import { Severity } from "@/components/alerts/fields/Severity";
 import { Assignees } from "@/components/alerts/fields/Assignees";
@@ -16,6 +13,7 @@ import { Development } from "@/components/alerts/fields/Development";
 import { AffectedBranches } from "@/components/alerts/fields/AffectedBranches";
 import { DescriptionBox } from "@/components/alerts/content/DescriptionBox";
 import codeScanningData from "@/mockData/code-scanning.json";
+import styles from "./page.module.css";
 
 const MOCK_GROUP_ASSIGNEES = [
     {
@@ -157,18 +155,115 @@ export default function CodeScanningAlertDetailPage({
                     <DescriptionBox
                         sections={[
                             {
-                                leadingVisual: <InfoIcon />,
-                                title: "Alert description title",
-                                caption: "Text",
-                                trailingContent: <InfoIcon />,
-                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                                leadingVisual: <AlertIcon />,
+                                title: "Code Vulnerability Found",
+                                content: (
+                                    <div>
+                                        <div className={styles.ruleInfo}>
+                                            <div className={styles.ruleRow}>
+                                                <div className={styles.ruleColumn}>
+                                                    <span className={styles.ruleLabel}>Tool</span>
+                                                    <span className={styles.ruleValue}>CodeQL</span>
+                                                </div>
+                                                <div className={styles.ruleColumn}>
+                                                    <span className={styles.ruleLabel}>Rule ID</span>
+                                                    <span className={styles.ruleValue}>
+                                                        <span className={styles.ruleId}>cpp/dangerous-function-overflow</span>
+                                                    </span>
+                                                </div>
+                                                <div className={styles.ruleColumn}>
+                                                    <span className={styles.ruleLabel}>Query</span>
+                                                    <span className={styles.ruleValue}>
+                                                        <a href="#" className={styles.viewSourceLink}>View source</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className={styles.descriptionText}>
+                                            This rule finds calls to the gets function, which is dangerous and should not be used. See Related rules below for rules that identify other dangerous functions.
+                                        </p>
+                                        <Button size="small" trailingVisual={ArrowDownIcon}>
+                                            Show more
+                                        </Button>
+                                    </div>
+                                )
                             },
                             {
-                                leadingVisual: <InfoIcon />,
+                                leadingVisual: <ChecklistIcon />,
                                 title: "Remediating this alert",
-                                caption: "Text",
-                                trailingContent: <InfoIcon />,
-                                content: <div style={{ padding: '64px', backgroundColor: 'var(--bgColor-accent-muted)', color: 'var(--fgColor-accent)', textAlign: 'center', borderRadius: '6px' }}>Placeholder slot</div>
+                                content: (
+                                    <div>
+                                        <div className={styles.autofixHeader}>
+                                            <span className={styles.copilotBadge}>
+                                                <CopilotIcon className={styles.copilotIcon} />
+                                                <span className={styles.copilotText}>Copilot Autofix</span>
+                                            </span>
+                                            <Label>AI</Label>
+                                            <span className={styles.generatedText}>generated 3 months ago</span>
+                                        </div>
+                                        <p className={styles.remediationText}>
+                                            The best way to fix the problem is to replace the call to gets(buff); with a safer alternative that guards against buffer overflows, specifically fgets. The fgets function allows specification of the buffer size, thus preventing overflow. Since the parameter is char buff[128], we will use fgets(buff, 128, stdin);. No additional headers are necessary, as fgets is part of the C standard library (already in the prototype scope). The functionality does not require any changes otherwise, so only a one-line replacement is needed for line 29 in test.cpp. (If you want to match the behavior of gets exactly in terms of \n handling, post-processing may be required, but for the sake of this fix and to avoid adding new code unless necessary, we simply make the switch to fgets.)
+                                        </p>
+                                        <div className={styles.diffViewer}>
+                                            <div className={styles.diffHeader}>
+                                                <div className={styles.diffHeaderLeft}>
+                                                    <span className={styles.diffFileName}>test.cpp</span>
+                                                    <IconButton icon={CopyIcon} variant="invisible" size="small" aria-label="Copy" />
+                                                    <Label>Autofix</Label>
+                                                </div>
+                                                <IconButton icon={UnfoldIcon} variant="invisible" size="small" aria-label="Expand" />
+                                            </div>
+                                            <div className={styles.diffExpandRowTop}>
+                                                <div className={styles.expandIconColumn}>
+                                                    <IconButton icon={ChevronUpIcon} variant="invisible" size="small" aria-label="Expand up" />
+                                                </div>
+                                                <div className={styles.expandTextColumn}>
+                                                    @@ -11,3 +11,4 @@
+                                                </div>
+                                            </div>
+                                            <div className={styles.diffContent}>
+                                                <div className={styles.diffLine}>
+                                                    <span className={styles.diffLineNumbers}>11</span>
+                                                    <span className={styles.diffLineContent}>    void func(char bugg[128], unsigned long</span>
+                                                </div>
+                                                <div className={styles.diffLine}>
+                                                    <span className={styles.diffLineNumbers}></span>
+                                                    <span className={styles.diffLineContent}>    long sz) {'{'}</span>
+                                                </div>
+                                                <div className={`${styles.diffLine} ${styles.diffLineRemoved}`}>
+                                                    <span className={styles.diffLineNumbers}>12</span>
+                                                    <span className={styles.diffLineContent}>-       gets(buff);</span>
+                                                </div>
+                                                <div className={`${styles.diffLine} ${styles.diffLineAdded}`}>
+                                                    <span className={styles.diffLineNumbers}>12</span>
+                                                    <span className={styles.diffLineContent}>+       gets(buff, 128, stdin);</span>
+                                                </div>
+                                                <div className={styles.diffLine}>
+                                                    <span className={styles.diffLineNumbers}>13</span>
+                                                    <span className={styles.diffLineContent}>    memset(buff, 0, PW_SIZE); // GOOD</span>
+                                                </div>
+                                                <div className={styles.diffLine}>
+                                                    <span className={styles.diffLineNumbers}>14</span>
+                                                    <span className={styles.diffLineContent}>    {'}'}</span>
+                                                </div>
+                                            </div>
+                                            <div className={styles.diffExpandRowBottom}>
+                                                <div className={styles.expandIconColumn}>
+                                                    <IconButton icon={ChevronDownIcon} variant="invisible" size="small" aria-label="Expand down" />
+                                                </div>
+                                                <div className={styles.expandTextColumn}></div>
+                                            </div>
+                                            <div className={styles.diffFooter}>
+                                                Copilot Autofix for CodeQL is powered by AI and may make mistakes. Always verify output.
+                                            </div>
+                                        </div>
+                                        <div className={styles.buttonContainer}>
+                                            <Button variant="primary">
+                                                Commit to a new branch
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )
                             }
                         ]}
                     />

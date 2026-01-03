@@ -33,3 +33,221 @@
     width: 14px !important;
     height: 14px !important;
 }
+
+.ruleInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-12);
+    padding: var(--base-size-16);
+    background-color: var(--bgColor-muted);
+    border-radius: var(--borderRadius-medium);
+    margin-bottom: var(--base-size-12);
+}
+
+.ruleRow {
+    display: flex;
+    gap: var(--base-size-24);
+}
+
+.ruleColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-size-4);
+}
+
+.ruleLabel {
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-normal);
+    color: var(--fgColor-muted);
+}
+
+.ruleValue {
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-semibold);
+    color: var(--fgColor-default);
+}
+
+.ruleId {
+    font-family: var(--fontStack-monospace);
+}
+
+.viewSourceLink {
+    color: var(--fgColor-link);
+    text-decoration: none;
+}
+
+.viewSourceLink:hover {
+    text-decoration: underline;
+}
+
+.descriptionText {
+    font-size: var(--text-body-size-medium);
+    line-height: var(--text-body-lineHeight-medium);
+    color: var(--fgColor-default);
+    margin-bottom: var(--base-size-12);
+}
+
+.showMoreButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--base-size-4);
+}
+
+.autofixHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--base-size-8);
+    margin-bottom: var(--base-size-12);
+}
+
+.copilotBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--base-size-4);
+}
+
+.copilotIcon {
+    width: 14px;
+    height: 14px;
+    color: var(--fgColor-muted);
+}
+
+.copilotText {
+    font-size: var(--text-body-size-medium);
+    font-weight: var(--base-text-weight-semibold);
+}
+
+.aiBadge {
+    display: inline-flex;
+    padding: 0 var(--base-size-4);
+    background-color: var(--bgColor-accent-emphasis);
+    color: var(--fgColor-onEmphasis);
+    border-radius: var(--borderRadius-small);
+    font-size: var(--text-caption-size);
+    font-weight: var(--base-text-weight-semibold);
+    line-height: 16px;
+}
+
+.generatedText {
+    font-size: var(--text-body-size-small);
+    color: var(--fgColor-muted);
+}
+
+.remediationText {
+    font-size: var(--text-body-size-medium);
+    line-height: var(--text-body-lineHeight-medium);
+    color: var(--fgColor-default);
+    margin-bottom: var(--base-size-16);
+}
+
+.diffViewer {
+    border: 1px solid var(--borderColor-default);
+    border-radius: var(--borderRadius-medium);
+    overflow: hidden;
+    margin-bottom: var(--base-size-16);
+}
+
+.diffHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--base-size-8) var(--base-size-12);
+    background-color: var(--bgColor-muted);
+    border-bottom: 1px solid var(--borderColor-default);
+}
+
+.diffHeaderLeft {
+    display: flex;
+    align-items: center;
+    gap: var(--base-size-8);
+}
+
+.diffFileName {
+    display: flex;
+    align-items: center;
+    gap: var(--base-size-8);
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-semibold);
+}
+
+.diffContent {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bgColor-default);
+}
+
+.diffExpandRowTop {
+    display: flex;
+    background-color: var(--bgColor-accent-muted);
+    border-bottom: 1px solid var(--borderColor-default);
+}
+
+.diffExpandRowBottom {
+    display: flex;
+    background-color: var(--bgColor-accent-muted);
+    border-top: 1px solid var(--borderColor-default);
+}
+
+.expandIconColumn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 56px;
+    padding: var(--base-size-4) 0 var(--base-size-4) var(--base-size-4);
+    background-color: var(--bgColor-accent-muted);
+}
+
+.expandTextColumn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: var(--base-size-4) var(--base-size-8);
+    font-family: var(--fontStack-monospace);
+    font-size: var(--text-body-size-small);
+    color: var(--fgColor-muted);
+}
+
+.diffLineNumbers {
+    display: inline-block;
+    min-width: 40px;
+    padding: 0 var(--base-size-8);
+    text-align: right;
+    color: var(--fgColor-muted);
+    user-select: none;
+    background-color: var(--bgColor-muted);
+    font-size: var(--text-body-size-small);
+}
+
+.diffLine {
+    display: flex;
+    font-family: var(--fontStack-monospace);
+    font-size: var(--text-body-size-small);
+    line-height: 1.5;
+}
+
+.diffLineRemoved {
+    background-color: var(--bgColor-danger-muted);
+}
+
+.diffLineAdded {
+    background-color: var(--bgColor-success-muted);
+}
+
+.diffLineContent {
+    flex: 1;
+    padding: 0 var(--base-size-8);
+    white-space: pre;
+}
+
+.diffFooter {
+    padding: var(--base-size-8) var(--base-size-12);
+    background-color: var(--bgColor-muted);
+    border-top: 1px solid var(--borderColor-default);
+    font-size: var(--text-body-size-small);
+    color: var(--fgColor-muted);
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
